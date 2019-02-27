@@ -1,7 +1,12 @@
 function define_quick_craft (pre, num, count_fn)
     script.on_event(pre .. num, function(event)
         player = game.players[event.player_index]
-        local slot = player.get_quick_bar_slot(num)
+        local page = player.get_active_quick_bar_page(1)
+        if page == nil then
+            return
+        end
+
+        local slot = player.get_quick_bar_slot(num + 10 * page)
         if slot ~= null and slot.valid then
             try_craft(player, slot, count_fn)
         end
