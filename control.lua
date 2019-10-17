@@ -6,7 +6,7 @@ function define_quick_craft (pre, num, count_fn)
             return
         end
 
-        local slot = player.get_quick_bar_slot(num + 10 * page)
+        local slot = player.get_quick_bar_slot(num + 10 * (page - 1))
         if slot ~= null and slot.valid then
             try_craft(player, slot, count_fn)
         end
